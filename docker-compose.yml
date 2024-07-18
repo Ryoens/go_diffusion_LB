@@ -1,0 +1,54 @@
+version: '3'
+
+# volumes:
+      #- ./web1:/go/myapp
+
+services:
+  web1:
+    container_name: web1
+    image: server2
+    tty: true
+    networks:
+      webnet:
+        ipv4_address: 10.10.0.2
+
+  web2:
+    container_name: web2
+    image: client
+    tty: true
+    networks:
+      webnet:
+        ipv4_address: 10.10.20.2
+
+  web3:
+    container_name: web3
+    image: client
+    tty: true
+    networks:
+      webnet:
+        ipv4_address: 10.10.30.2
+
+  web4:
+    container_name: web4
+    image: client
+    tty: true
+    networks:
+      webnet:
+        ipv4_address: 10.10.40.2
+
+  web5:
+    container_name: web5
+    image: client
+    tty: true
+    networks:
+      webnet:
+        ipv4_address: 10.10.50.2
+
+networks:
+  webnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.10.0.0/16
+
