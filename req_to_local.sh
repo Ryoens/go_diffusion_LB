@@ -4,12 +4,14 @@
 server="10.10.0.2:8000" # to container
 
 count=0
+requests=270000 # set limit
+wait_time=0.001 # delay per second
 start_time=`date "+%Y-%m-%d %H:%M:%S"`
 
 while true
 do
   
-  if [ $count -eq 270000 ]; then
+  if [ $count -eq $requests ]; then
     end_time=`date "+%Y-%m-%d %H:%M:%S"`
     echo "finish" $start_time $end_time
     break
@@ -24,7 +26,7 @@ do
     echo $count
     
     #echo "+++"
-    sleep 0.001
+    sleep $wait_time
   fi
 
 done
